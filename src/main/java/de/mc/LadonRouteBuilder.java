@@ -15,7 +15,7 @@ public class LadonRouteBuilder extends RouteBuilder {
         from("file:input?recursive=true&maxMessagesPerPoll=1000&scheduledExecutorService=#uploadExecutor")
                 .log("Uploading ${file:name} to Ladon")
                 .setHeader(S3Constants.KEY, simple("${file:path}"))
-                .to("aws-s3://bucket?amazonS3Client=#client");
+                .to("aws-s3://test?amazonS3Client=#client");
     }
 
 }
