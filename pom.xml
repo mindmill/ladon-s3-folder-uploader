@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.mc</groupId>
-  <artifactId>camel-test</artifactId>
+  <artifactId>ladon-folder-uploader</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
-  <name>A Camel Route</name>
+  <name>Ladon Folder Uploader</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -66,6 +66,15 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <developers>
+    <developer>
+      <name>Ralf Ulrich</name>
+      <email>ralf.ulrich@mind-consulting.de</email>
+      <organization>Mind Consulting UG</organization>
+      <organizationUrl>http://mind-consulting.de</organizationUrl>
+    </developer>
+  </developers>
 
   <build>
     <defaultGoal>install</defaultGoal>
