@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/input/s3web" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/camel/input/CoreUI-Free-Bootstrap-Admin-Template-master/Vue_Starter" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/camel/input/s3commander" vcs="Git" />
   </component>

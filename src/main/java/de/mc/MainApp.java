@@ -18,44 +18,40 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 /**
- * A Camel Application
+ * A Camel Ladon Upload Application
  */
 public class MainApp {
 
 
     public static void main(String... args) throws Exception {
         Main main = new Main();
-        AWSCredentials awsCredentials = new BasicAWSCredentials("byb5DVEIkNqJ9fptNJfh", "tQWwTXUL-Mavpi-GL7RzfiHmpN9S6nuEv1fj0TTq");
+        AWSCredentials awsCredentials = new BasicAWSCredentials("emrTasANHPRUPwY6IZIQ", "JfVVzYvYyG30yAE1-pN93CnCN1aVyzyVaB15Ez1C");
 
 
         ClientConfiguration clientConfiguration = getClientConfiguration();
 
         AmazonS3 client = new AmazonS3Client(awsCredentials, clientConfiguration);
         client.setS3ClientOptions(new S3ClientOptions().withPathStyleAccess(true));
-        client.setEndpoint("https://ladon.mind-consulting.de/services/s3");
-        //((AmazonS3Client) client).setSignerRegionOverride("S3SignerType");
+        client.setEndpoint("http://localhost:8080/services/s3");
         main.bind("client", client);
-
         ScheduledExecutorService upload = Executors.newScheduledThreadPool(4);
         main.bind("uploadExecutor", upload);
-
 
         main.addRouteBuilder(new LadonRouteBuilder());
         main.run(args);
     }
 
+    //Disable SSL v
     private static ClientConfiguration getClientConfiguration() throws NoSuchAlgorithmException, KeyManagementException {
         ClientConfiguration clientConfiguration = new ClientConfiguration();
         SSLContext sc = SSLContext.getInstance("TLS");
         sc.init(null, new TrustManager[]{new X509TrustManager() {
 
             @Override
-            public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
-            }
+            public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException { }
 
             @Override
-            public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
-            }
+            public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException { }
 
             @Override
             public X509Certificate[] getAcceptedIssuers() {
